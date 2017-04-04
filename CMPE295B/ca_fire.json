@@ -1,0 +1,127 @@
+{
+  "rss": {
+    "-xmlns:atom": "http://www.w3.org/2005/Atom",
+    "-xmlns:geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+    "-version": "2.0",
+    "channel": {
+      "atom:link": {
+        "-href": "http://cdfdata.fire.ca.gov/incidents/rss.xml",
+        "-rel": "self",
+        "-type": "application/rss+xml"
+      },
+      "title": "CDF Incidents",
+      "description": "List of current minor and major CDF incidents, last updated today at  04:16:50",
+      "link": "http://cdfdata.fire.ca.gov/incidents/",
+      "copyright": "Copyright 2017 CDF",
+      "item": [
+        {
+          "title": "Oroville Spillway  (Butte County) Started 2/07/2017, updated 3/06/2017",
+          "description": "The flood control spillway flows remain at 0 cubic feet per second (cfs). Inflows are approximately 15,000 to 20,000 cfs which has resulted in the lake rising from 852.9 feet to 855.3 feet elevation in the last 24 hours. Flows to meet environmental requirements are being met by releases through the Thermalito Diversion Dam and Thermalito Afterbay River Outlet. The total flow to the Feather River remains at 2500 cfs.",
+          "link": "http://www.fire.ca.gov/current_incidents/incidentdetails/Index/1466",
+          "pubDate": " Mon, 6 Mar 2017 10:30:00 PST",
+          "geo:lat": "-121.55633/39.51158"
+        },
+        {
+          "title": "Meadow Fire (Tulare County) Started 10/29/2016, updated 12/19/2016",
+          "link": "http://cdfdata.fire.ca.gov/incidents/incidents_details_info?incident_id=1464",
+          "pubDate": " Mon, 19 Dec 2016 13:30:00 PST",
+          "geo:lat": "-118.551",
+          "geo:long": "35.984"
+        },
+        {
+          "title": "Jacobson Fire (Tulare County) Started 10/20/2016, updated 12/19/2016",
+          "link": "http://cdfdata.fire.ca.gov/incidents/incidents_details_info?incident_id=1463",
+          "pubDate": " Mon, 19 Dec 2016 13:30:00 PST",
+          "geo:lat": "-118.551",
+          "geo:long": "36.217"
+        },
+        {
+          "title": "Gopher Fire (San Diego County) Started 11/13/2016, updated 11/14/2016",
+          "link": "http://cdfdata.fire.ca.gov/incidents/incidents_details_info?incident_id=1461",
+          "pubDate": " Mon, 14 Nov 2016 18:00:00 PST",
+          "geo:lat": "-117.158475",
+          "geo:long": "33.254355"
+        },
+        {
+          "title": "Marek Fire (Los Angeles County) Started 11/14/2016, updated 11/14/2016",
+          "link": "http://cdfdata.fire.ca.gov/incidents/incidents_details_info?incident_id=1462",
+          "pubDate": " Mon, 14 Nov 2016 14:00:00 PST",
+          "geo:lat": "-118.335",
+          "geo:long": "34.31"
+        },
+        {
+          "title": "Tule Fire (Tulare County) Started 8/22/2016, updated 11/08/2016",
+          "link": "http://cdfdata.fire.ca.gov/incidents/incidents_details_info?incident_id=1399",
+          "pubDate": " Tue, 8 Nov 2016 10:15:00 PST",
+          "geo:lat": "36.1648",
+          "geo:long": "-118.73906"
+        },
+        {
+          "title": "Pony Fire (Siskiyou County) Started 6/07/2016, updated 11/08/2016",
+          "link": "http://cdfdata.fire.ca.gov/incidents/incidents_details_info?incident_id=1284",
+          "pubDate": " Tue, 8 Nov 2016 10:15:00 PST",
+          "geo:lat": "41.623",
+          "geo:long": "-123.557"
+        },
+        {
+          "title": "San Gabriel Complex (Formerly Fish & Reservoir Fires) (Los Angeles County) Started 6/20/2016, updated 11/08/2016",
+          "link": "http://cdfdata.fire.ca.gov/incidents/incidents_details_info?incident_id=1291",
+          "pubDate": " Tue, 8 Nov 2016 10:15:00 PST"
+        },
+        {
+          "title": "Sacata Fire (Fresno County) Started 10/11/2016, updated 10/20/2016",
+          "link": "http://cdfdata.fire.ca.gov/incidents/incidents_details_info?incident_id=1459",
+          "pubDate": " Thu, 20 Oct 2016 07:00:00 PDT",
+          "geo:lat": "-119.25959",
+          "geo:long": "36.94536"
+        },
+        {
+          "title": "Emerald Fire (El Dorado County) Started 10/14/2016, updated 10/17/2016",
+          "description": "The Emerald Fire is 100% contained. Debris continues to impact the roadway due to the high winds and torrential rains. Fire suppression repair is ongoing. Fire crews, law enforcement, Caltrans and Liberty Utilities continue to work in the area. Residents and visitors are advised to take extra caution while driving in these areas. Liberty Utilities is working to restore damaged infrastructure in the fire area in order to reestablish power to Spring Creek Tract. Agency cooperators would like to thank the community for their continued patience and support throughout this emergency.",
+          "link": "http://cdfdata.fire.ca.gov/incidents/incidents_details_info?incident_id=1460",
+          "pubDate": " Mon, 17 Oct 2016 11:45:00 PDT",
+          "geo:lat": "-120.10744",
+          "geo:long": "38.93449"
+        },
+        {
+          "title": "Soup Complex (Modoc County) Started 9/17/2016, updated 10/13/2016",
+          "link": "http://cdfdata.fire.ca.gov/incidents/incidents_details_info?incident_id=1441",
+          "pubDate": " Thu, 13 Oct 2016 11:30:00 PDT",
+          "geo:lat": "-120.3178",
+          "geo:long": "41.2649"
+        },
+        {
+          "title": "Soberanes Fire (Monterey County) Started 7/22/2016, updated 10/13/2016",
+          "description": "As of August 26, CAL FIRE is no longer in unified command of the fire as the majority of the activity is now burning on Los Padres National Forest land.  Visit  Inciweb for more information on this incidents. See the State's Post Fire Watershed Emergency Response Report.",
+          "link": "http://cdfdata.fire.ca.gov/incidents/incidents_details_info?incident_id=1348",
+          "pubDate": " Thu, 13 Oct 2016 11:30:00 PDT",
+          "geo:lat": "-121.89938",
+          "geo:long": "36.45994"
+        },
+        {
+          "title": "Loma Fire (Santa Clara County) Started 9/26/2016, updated 10/12/2016",
+          "description": "Fire crews remain throughout the fire perimeter to provide fire suppression repair, remove firefighting equipment, mop up and patrol. Please drive slowly and use caution as emergency crews and equipment are still working in the area. See the State's Post Fire Watershed Emergency Response Report. (October 2016) Loma Fire WERT Report - Storm Damage Response (February 2017)",
+          "link": "http://cdfdata.fire.ca.gov/incidents/incidents_details_info?incident_id=1457",
+          "pubDate": " Wed, 12 Oct 2016 18:00:00 PDT",
+          "geo:lat": "-121.85318",
+          "geo:long": "37.10632"
+        },
+        {
+          "title": "Creek Fire (Napa County) Started 10/10/2016, updated 10/12/2016",
+          "description": "Firefighters continued improving fire lines and mopping up the Creek Fire which was mapped in more detail at 65 acres in the western hills of Napa Valley today. Although the spread of the fire has stopped firefighters are calling it 80% contained while hot spots are being extinguished near the line.  The fire is projected to be 100% contained by tomorrow night (10/12). Motorists in the area need to use caution to allow for firefighter safety.",
+          "link": "http://cdfdata.fire.ca.gov/incidents/incidents_details_info?incident_id=1458",
+          "pubDate": " Wed, 12 Oct 2016 18:00:00 PDT",
+          "geo:lat": "-122.43172",
+          "geo:long": "38.40958"
+        },
+        {
+          "title": "Tobin Fire (Plumas County) Started 9/26/2016, updated 10/06/2016",
+          "link": "http://cdfdata.fire.ca.gov/incidents/incidents_details_info?incident_id=1456",
+          "pubDate": " Thu, 6 Oct 2016 17:15:00 PDT",
+          "geo:lat": "-121.32",
+          "geo:long": "39.92"
+        }
+      ]
+    }
+  }
+}

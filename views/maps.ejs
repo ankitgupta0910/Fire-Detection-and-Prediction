@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="assets/img/favicon.ico">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <title>Forest Fire Analysis and Prediction</title>
+
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+  <meta name="viewport" content="width=device-width" />
+
+  <!-- Angular     -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+  <!-- Bootstrap core CSS     -->
+  <link href="./stylesheets/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Animation library for notifications   -->
+  <link href="./stylesheets/animate.min.css" rel="stylesheet"/>
+
+  <!--  Light Bootstrap Table core CSS    -->
+  <link href="./stylesheets/light-bootstrap-dashboard.css" rel="stylesheet"/>
+
+
+  <!--  CSS for Demo Purpose, don't include it in your project     -->
+  <link href="./stylesheets/demo.css" rel="stylesheet" />
+
+  <link href="./stylesheets/map-icons.css" rel="stylesheet" />
+
+
+  <!--     Fonts and icons     -->
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+  <link href="./stylesheets/pe-icon-7-stroke.css" rel="stylesheet" />
+
+  <style>
+
+    .map-icon-label .map-icon {
+      font-size: 50px;
+      color: #ce2029;
+      line-height: 48px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+  </style>
+</head>
+<!--<body>-->
+<body ng-app="CMPE295B" data-ng-controller="cmpe295B">
+<div class="wrapper">
+  <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+
+    <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
+
+
+    <div class="sidebar-wrapper">
+      <div class="logo">
+        <a href="" class="simple-text">
+          Forest Fire Pro
+        </a>
+      </div>
+
+      <ul class="nav">
+        <li>
+          <a href="dashboard.html">
+            <i class="pe-7s-graph"></i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+        <li>
+          <a href="user.html">
+            <i class="pe-7s-user"></i>
+            <p>User Profile</p>
+          </a>
+        </li>
+        <li>
+          <a href="table.html">
+            <i class="pe-7s-note2"></i>
+            <p>Satellite Data</p>
+          </a>
+        </li>
+        <li>
+          <a href="typography.html">
+            <i class="pe-7s-news-paper"></i>
+            <p>Topography</p>
+          </a>
+        </li>
+        <li>
+          <a href="icons.html">
+            <i class="pe-7s-science"></i>
+            <p>Fire Prediction</p>
+          </a>
+        </li>
+        <li class="active">
+          <a href="maps.html">
+            <i class="pe-7s-map-marker"></i>
+            <p>Maps</p>
+          </a>
+        </li>
+        <li>
+          <a href="firefighters.html">
+            <i class="pe-7s-medal"></i>
+            <p>Fire Fighters</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="notifications.html">
+            <i class="pe-7s-bell"></i>
+            <p>Notifications</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-panel">
+    <nav class="navbar navbar-default navbar-fixed">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Maps</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-dashboard"></i>
+              </a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-globe"></i>
+                <b class="caret"></b>
+                <span class="notification">5</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Notification 1</a></li>
+                <li><a href="#">Notification 2</a></li>
+                <li><a href="#">Notification 3</a></li>
+                <li><a href="#">Notification 4</a></li>
+                <li><a href="#">Another notification</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="">
+                <i class="fa fa-search"></i>
+              </a>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="">
+                Account
+              </a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Dropdown
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                Log out
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="map"></div>
+
+  </div>
+</div>
+
+
+</body>
+
+<!--   Core JS Files   -->
+<script src="./javascripts/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="./javascripts/bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script src="./javascripts/bootstrap-checkbox-radio-switch.js"></script>
+
+<!--  Charts Plugin -->
+<script src="./javascripts/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script src="./javascripts/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUMpj4BI1rWIk7wu3GxyXal2dWDjyqKGU&sensor=false"></script>
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="./javascripts/light-bootstrap-dashboard.js"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="./javascripts/demo.js"></script>
+
+<script src="./javascripts/map-icons.js"></script>
+
+<!--<script>-->
+    <!--$().ready(function(){-->
+        <!--initGoogleMaps();-->
+    <!--});-->
+<!--</script>-->
+
+<script>
+
+    var app = angular.module('CMPE295B', []);
+
+    app.controller('cmpe295B', function ($scope,$http,$window,$filter) {
+
+        alert("maops");
+        $http({
+            method: 'GET',
+            url: '/maps/getlatlong'
+        }).
+        then(function(response)
+        {
+            if (response.data.status == 200)
+            {
+                alert(response.data.detail[0].lat);
+                alert(response.data.detail[0].long);
+                alert(response.data.detail.length);
+                // var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
+                var bounds = new google.maps.LatLngBounds();
+                var mapOptions = {
+                    mapTypeId: 'satellite'
+                };
+
+                var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+//                var markers = [
+//                        ['Brooklyn Museum, NY', 40.671531, -73.963588],
+//                        ['Brooklyn Public Library, NY', 40.672587, -73.968146],
+//                        ['Prospect Park Zoo, NY', 40.665588, -73.965336]
+//                            ['Prospect Park Zoo, NY', response.data.detail.lat, response.data.detail.long]
+//                    ]
+//                    ;
+
+                // Info window content
+                var infoWindowContent = [
+                    ['<div class="info_content">' +
+                    '<h3>Brooklyn Museum</h3>' +
+                    '<p>The Brooklyn Museum is an art museum located in the New York City borough of Brooklyn.</p>' + '</div>'],
+                    ['<div class="info_content">' +
+                    '<img src="/images/image2.jpg"/>' +
+                    '</div>'],
+                    ['<div class="info_content">' +
+                    '<h3>Prospect Park Zoo</h3>' +
+                    '<p>The Prospect Park Zoo is a 12-acre (4.9 ha) zoo located off Flatbush Avenue on the eastern side of Prospect Park, Brooklyn, New York City.</p>' +
+                    '</div>']
+                ];
+
+                // Add multiple markers to map
+                var infoWindow = new google.maps.InfoWindow(), marker, i;
+
+                // Place each marker on the map
+                for (i = 1; i < response.data.detail.length; i++) {
+                    var position = new google.maps.LatLng(response.data.detail[i].lat, response.data.detail[i].long);
+                    bounds.extend(position);
+
+                    marker = new Marker({
+                        position: position,
+                        map: map,
+//                        title: markers[i][0],
+                        title: response.data.detail[i].name,
+                        icon: {
+                            path: SQUARE_PIN,
+                            fillColor: '#00FFFFFF',
+                            fillOpacity: 0,
+                            strokeColor: '',
+                            strokeWeight: 0
+                        },
+                        map_icon_label: '<span class="map-icon map-icon-fire-station"></span>'
+                    });
+
+                    // Add info window to marker
+                    google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
+                        return function () {
+                            infoWindow.setContent(infoWindowContent[i][0]);
+                            infoWindow.open(map, marker);
+                        }
+                    })(marker, i));
+
+                    google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                        return function () {
+                            alert(response.data.detail[i].name);
+                            $window.location.href = '/fire_detection?var=' + response.data.detail[i].name;
+//                            $http({
+//                                method: 'GET',
+//                                url: '/fire_prediction',
+//                                data: response.data.detail[i].name
+//                            }).
+//                            then(function(response)
+//                            {
+//                                if (response.data.status == 200)
+//                                {}})
+                        }
+                    })(marker, i));
+                    // Center the map to fit all markers on the screen
+                    map.fitBounds(bounds);
+                }
+
+                // Set zoom level
+                var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function (event) {
+                    this.setZoom(8);
+                    google.maps.event.removeListener(boundsListener);
+                });
+//                $scope.email=response.data.mail;
+//                $scope.first_name=response.data.fname;
+//                $scope.last_name=response.data.lname;
+            }
+
+        });
+
+//        function initGoogleMaps() {
+//            // var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
+//            var bounds = new google.maps.LatLngBounds();
+//            var mapOptions = {
+//                mapTypeId: 'satellite'
+//            };
+//
+//            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+//            var markers = [
+//                ['Brooklyn Museum, NY', 40.671531, -73.963588],
+//                ['Brooklyn Public Library, NY', 40.672587, -73.968146],
+//                ['Prospect Park Zoo, NY', 40.665588, -73.965336]
+//                ]
+//            ;
+//
+//            // Info window content
+//            var infoWindowContent = [
+//                ['<div class="info_content">' +
+//                '<h3>Brooklyn Museum</h3>' +
+//                '<p>The Brooklyn Museum is an art museum located in the New York City borough of Brooklyn.</p>' + '</div>'],
+//                ['<div class="info_content">' +
+//                '<h3>Brooklyn Public Library</h3>' +
+//                '<p>The Brooklyn Public Library (BPL) is the public library system of the borough of Brooklyn, in New York City.</p>' +
+//                '</div>'],
+//                ['<div class="info_content">' +
+//                '<h3>Prospect Park Zoo</h3>' +
+//                '<p>The Prospect Park Zoo is a 12-acre (4.9 ha) zoo located off Flatbush Avenue on the eastern side of Prospect Park, Brooklyn, New York City.</p>' +
+//                '</div>']
+//            ];
+//
+//            // Add multiple markers to map
+//            var infoWindow = new google.maps.InfoWindow(), marker, i;
+//
+//            // Place each marker on the map
+//            for (i = 0; i < markers.length; i++) {
+//                var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+//                bounds.extend(position);
+//
+//                marker = new Marker({
+//                    position: position,
+//                    map: map,
+//                    title: markers[i][0],
+//                    icon: {
+//                        path: SQUARE_PIN,
+//                        fillColor: '#00FFFFFF',
+//                        fillOpacity: 0,
+//                        strokeColor: '',
+//                        strokeWeight: 0
+//                    },
+//                    map_icon_label: '<span class="map-icon map-icon-fire-station"></span>'
+//                });
+//
+//                // Add info window to marker
+//                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+//                    return function () {
+//                        infoWindow.setContent(infoWindowContent[i][0]);
+//                        infoWindow.open(map, marker);
+//                    }
+//                })(marker, i));
+//
+//                // Center the map to fit all markers on the screen
+//                map.fitBounds(bounds);
+//            }
+//
+//            // Set zoom level
+//            var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function (event) {
+//                this.setZoom(14);
+//                google.maps.event.removeListener(boundsListener);
+//            });
+//
+//
+//            // var marker = new google.maps.Marker({
+//            //     position: myLatlng,
+//            //     title:"Hello World!"
+//            // });
+//
+//            // // To add the marker to the map, call setMap();
+//            // marker.setMap(map);
+//
+//            //         var map;
+//
+//            // var mapOptions = {
+//            //     mapTypeId: 'roadmap'
+//            // };
+//
+//            // Display a map on the web page
+//            // map = new google.maps.Map(document.getElementById("mapCanvas"), mapOptions);
+//            // map.setTilt(50);
+//
+//            // Multiple markers location, latitude, and longitude
+//        }
+    });
+</script>
+
+</html>
