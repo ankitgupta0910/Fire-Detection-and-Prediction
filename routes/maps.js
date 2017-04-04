@@ -17,9 +17,9 @@ console.log("Hello maps");
 
     mongo.connect(mongoURL, function () {
         console.log('Connected to mongo at: ' + mongoURL);
-        var coll = mongo.collection('images');
+        var coll = mongo.collection('final_images');
 
-        coll.find({}).toArray(function (err, user) {
+        coll.find({}).limit(5).toArray(function (err, user) {
             if (user) {
 
                 json_responses={"statusCode": 200, "server": mongoURL, "hello": user.lat};

@@ -208,7 +208,7 @@
 <script src="./javascripts/bootstrap-notify.js"></script>
 
 <!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUMpj4BI1rWIk7wu3GxyXal2dWDjyqKGU&sensor=false"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUMpj4BI1rWIk7wu3GxyXal2dWDjyqKGU"></script>
 
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="./javascripts/light-bootstrap-dashboard.js"></script>
@@ -240,7 +240,9 @@
             if (response.data.status == 200)
             {
                 alert(response.data.detail[0].lat);
-                alert(response.data.detail[0].long);
+                alert(response.data.detail[0].Long);
+                alert(response.data.detail[0].FIRE);
+                alert(response.data.detail[0].IMAGE);
                 alert(response.data.detail.length);
                 // var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
                 var bounds = new google.maps.LatLngBounds();
@@ -257,26 +259,22 @@
 //                    ]
 //                    ;
 
-                // Info window content
-                var infoWindowContent = [
-                    ['<div class="info_content">' +
-                    '<h3>Brooklyn Museum</h3>' +
-                    '<p>The Brooklyn Museum is an art museum located in the New York City borough of Brooklyn.</p>' + '</div>'],
-                    ['<div class="info_content">' +
-                    '<img src="/images/image2.jpg"/>' +
-                    '</div>'],
-                    ['<div class="info_content">' +
-                    '<h3>Prospect Park Zoo</h3>' +
-                    '<p>The Prospect Park Zoo is a 12-acre (4.9 ha) zoo located off Flatbush Avenue on the eastern side of Prospect Park, Brooklyn, New York City.</p>' +
-                    '</div>']
-                ];
+
 
                 // Add multiple markers to map
                 var infoWindow = new google.maps.InfoWindow(), marker, i;
+                var infoWindowContent = []
 
                 // Place each marker on the map
-                for (i = 1; i < response.data.detail.length; i++) {
-                    var position = new google.maps.LatLng(response.data.detail[i].lat, response.data.detail[i].long);
+                for (i = 0; i < response.data.detail.length; i++) {
+                    // Info window content
+                    var img1 = "/images/" + response.data.detail[i].IMAGE + "_300.jpg";
+                    infoWindowContent.push(
+                        ['<div class="info_content">' +
+                        '<h3>' + response.data.detail[i].FIRE + '</h3>' +
+                        '<img src="' + img1 + '"/>' + '</div>'])
+
+                    var position = new google.maps.LatLng(response.data.detail[i].lat, response.data.detail[i].Long);
                     bounds.extend(position);
 
                     marker = new Marker({
@@ -305,7 +303,7 @@
                     google.maps.event.addListener(marker, 'click', (function (marker, i) {
                         return function () {
                             alert(response.data.detail[i].name);
-                            $window.location.href = '/fire_detection?var=' + response.data.detail[i].name;
+                            $window.location.href = '/fire_detection?var=' + response.data.detail[i].IMAGE;
 //                            $http({
 //                                method: 'GET',
 //                                url: '/fire_prediction',
@@ -323,7 +321,7 @@
 
                 // Set zoom level
                 var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function (event) {
-                    this.setZoom(8);
+                    this.setZoom(4);
                     google.maps.event.removeListener(boundsListener);
                 });
 //                $scope.email=response.data.mail;
