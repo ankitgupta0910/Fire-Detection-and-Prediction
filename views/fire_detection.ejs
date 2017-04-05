@@ -180,19 +180,18 @@
     <div class="content">
       <div class="container-fluid">
         <div class="row">
-
           <div class="col-md-9">
             <div class="card">
                 <img src="/images/<%= result %>" style="height:500px;width:715px"/>
-              </div>
             </div>
+          </div>
 
           <div class="col-md-3">
-          <div class="card">
-            <div class="header">
-              <h4 class="title">Fire Statistics</h4>
-              <p class="category">Last Campaign Performance</p>
-            </div>
+            <div class="card">
+              <div class="header">
+                <h4 class="title"><%= detail %></h4>
+                <p class="category">Last Campaign Performance</p>
+              </div>
             <div class="content">
               <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
 
@@ -210,11 +209,21 @@
             </div>
           </div>
           </div>
-
         </div>
         </div>
-      </div>
 
+
+  <div>
+    <table class="table table-bordered">
+      <tr>
+        <th ng-repeat="(key, val) in items[0]">{{key}}</th>
+      </tr>
+      <tr ng-repeat="item in items">
+        <td ng-repeat="(key, val) in item">{{val}}</td>
+      </tr>
+      </table>
+  </div>
+    </div>
 
     <footer class="footer">
       <div class="container-fluid">
@@ -292,6 +301,7 @@
 
     });
 
+
     var app = angular.module('CMPE295B', []);
 
     app.controller('cmpe295B', function ($scope,$http,$window,$filter)
@@ -302,6 +312,61 @@
         {
             $window.location.href = '/maps';
         }
+
+
+//        $http({
+//            method: 'GET',
+//            url: "http://api.wunderground.com/api/e543fd122f652dfc/history_20170403/q/CA/San_Francisco.json"
+//        }).then(function successCallback(response) {
+//            console.log("Ankit Data"+response.history);
+//            alert(Object.keys(response['history']['observations']).length);
+//            $scope.weather = [];
+//            for (var i = 0; i < Object.keys(response['history']['observations']).length - 1; i++) {
+//                var myObj = {
+//                    "date" : response['history']['observations'][i]['date']['pretty']
+//                }
+//                $scope.weather.push(myObj);
+//            }
+//            alert(JSON.stringify($scope.weather));
+//            $scope.items = [{
+//                date: "Soap",
+//                date1: "Soap",
+//            }, {
+//                date: "Bag",
+//                date1: "dasas",
+//            }];
+//            alert(JSON.stringify($scope.items));
+//        }, function errorCallback(response) {
+//            // called asynchronously if an error occurs
+//            // or server returns response with an error status.
+//            alert("Request Failed")
+//        });
+            $.ajax({
+                url : "http://api.wunderground.com/api/e543fd122f652dfc/history_20170403/q/CA/San_Francisco.json",
+                dataType : "jsonp",
+                success : function(parsed_json) {
+                    console.log(parsed_json.history);
+                    alert(Object.keys(parsed_json['history']['observations']).length);
+                    $scope.weather = [];
+                    for (i = 0; i < Object.keys(parsed_json['history']['observations']).length - 1; i++) {
+                        var myObj = {
+                            "date" : parsed_json['history']['observations'][i]['date']['pretty']
+                    }
+                    $scope.weather.push(myObj);
+                }
+                alert(JSON.stringify($scope.weather));
+                    $scope.items = [{
+                        date: "Soap",
+                        date1: "Soap",
+                    }, {
+                        date: "Bag",
+                        date1: "dasas",
+                    }];
+                    alert(JSON.stringify($scope.items));
+
+                }
+            });
+
 
     });
 </script>

@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
 
     console.log(req);
     console.log(req.query.var);
+    console.log(req.query.var1);
 
     var options = {
         args: [req.query.var]
@@ -23,9 +24,7 @@ router.get('/', function(req, res, next) {
         // results is an array consisting of messages collected during execution
         console.log('results: %j', results);
     });
-
-
-    res.render('fire_detection', { result: 'detected_' + req.query.var + '.jpg'});
+    res.render('fire_detection', { result: 'detected_' + req.query.var + '.jpg', detail: req.query.var1});
 });
 
 
