@@ -18,8 +18,8 @@ vehicles = vehicle_classifier.detectMultiScale(cctv_image, 1.1, 2, maxSize=(100,
 
 # draw a rectangle around every vehicle detected
 for (x,y,w,h) in vehicles:
-    cv2.rectangle(cctv_image, (x,y), (x+w, y+h),(255,0,0),2)
-
+#    cv2.rectangle(cctv_image, (x,y), (x+w, y+h),(255,0,0),2)
+	cv2.line(cctv_image,(x,y),(x+1,y+1),(0,0,255),10)
 plt.figure(figsize=(9,9))
 plt.axis('off')
 cv2.imwrite( "/Users/ankitgupta/Documents/WebstormProjects/CMPE295B/public/images/detected_" + sys.argv[1] + '.jpg',cctv_image);
