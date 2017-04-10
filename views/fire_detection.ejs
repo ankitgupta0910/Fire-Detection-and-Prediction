@@ -191,6 +191,7 @@
             <div class="card">
               <div class="header">
                 <h4 class="title"><%= detail %></h4>
+                <!--<input type="hidden" name="qdate" ng-value="qdate" ng-init=<%= qdate %> />-->
                 <p class="category">The color of smoke is greyish blue and it is very dense.</p>
               </div>
             <div class="content">
@@ -327,7 +328,7 @@ src="./javascripts/bootstrap.min.js" type="text/javascript"></script>
     app.controller('cmpe295B', function ($scope,$http,$window,$filter)
     {
 
-        alert("Ankit");
+        alert(<%=qdate%>);
         $scope.map = function()
         {
             $window.location.href = '/maps';
@@ -335,7 +336,7 @@ src="./javascripts/bootstrap.min.js" type="text/javascript"></script>
 
         $http({
             method: 'GET',
-            url: 'http://api.wunderground.com/api/e543fd122f652dfc/history_20170403/q/CA/San_Francisco.json'
+            url: 'http://api.=.com/api/e543fd122f652dfc/history_' + <%= qdate %> + '/q/CA/San_Francisco.json'
 
         }). then(function(response) {
             $scope.weather = [];

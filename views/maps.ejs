@@ -303,7 +303,7 @@
                     google.maps.event.addListener(marker, 'click', (function (marker, i) {
                         return function () {
                             alert(response.data.detail[i].name);
-                            $window.location.href = '/fire_detection?var=' + response.data.detail[i].IMAGE + '&var1=' + response.data.detail[i].FIRE;
+                            $window.location.href = '/fire_detection?var=' + response.data.detail[i].IMAGE + '&var1=' + response.data.detail[i].FIRE  + '&var2=' + response.data.detail[i].DATE;
 //                            $http({
 //                                method: 'GET',
 //                                url: '/fire_prediction',
