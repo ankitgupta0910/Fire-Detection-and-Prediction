@@ -23,9 +23,10 @@ router.get('/', function(req, res, next) {
 
     PythonShell.run('/CMPE295B/Janish/object_detection.py', options, function (err, results) {
         if (err) throw err;
-        // results is an array consisting of messages collected during execution
         console.log('results: %j', results);
     });
+
+
     res.render('fire_detection', { result: 'detected_' + req.query.var + '.jpg', detail: req.query.var1, qdate: dateFormat(now, "yyyymmdd")});
 });
 

@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
     console.log(req);
     console.log(req.query.var);
-
+    console.log(req.query.var1);
     // var options = {
     //     host: 'cdfdata.fire.ca.gov',
     //     path: '/incidents/rss.xml'
@@ -31,7 +31,7 @@ router.get('/', function(req, res, next) {
     //     var cleanedString = chunk.replace("\ufeff", "");
     //     console.log(cleanedString);
 
-    res.render('fire_prediction', { title: 'Express' });
+    // res.render('fire_prediction', { title: 'Express' });
 });
 
 
