@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+app.all('/', index);
 app.use('/user_profile', user_profile);
 app.use('/satellite_data', satellite_data);
 app.use('/fire_prediction', fire_prediction);
@@ -39,7 +39,7 @@ app.use('/notifications', notifications);
 app.use('/users', users);
 app.use('/maps/getlatlong', maps);
 app.use('/fire_detection', fire_detection);
-app.use('/fire_prediction', fire_prediction);
+app.all('/fire_prediction', fire_prediction);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

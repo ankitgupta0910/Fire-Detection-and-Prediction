@@ -11,7 +11,7 @@ var chunk;
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-    console.log(req);
+    // console.log(req);
     console.log(req.query.var);
     console.log(req.query.var1);
     console.log("Ankit" + req.query.var2);
