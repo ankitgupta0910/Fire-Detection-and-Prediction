@@ -5,8 +5,15 @@ var http = require('http');
 var rss = require('rss-api');
 var mongo = require("./mongo");
 var mongoURL = "mongodb://ec2-35-165-223-223.us-west-2.compute.amazonaws.com/CMPE295";
-
+var forEach = require('async-foreach').forEach;
+var rfm = [];
 /* GET home page. */
+
+// Generic "done" callback.
+function allDone(notAborted, arr) {
+    console.log(rfm, notAborted, arr);
+}
+
 router.post('/', function(req, res, next) {
     mongo.connect(mongoURL, function () {
     // console.log(req);
@@ -16,26 +23,51 @@ router.post('/', function(req, res, next) {
     console.log(humi[0]);
     var l = req.param("temp").length;
     console.log("LLLLLL" + l);
-    for(var i = 0; i < l; i++){
-        console.log("In for loop");
-        // console.log("Ankit" + temp[i]);
-        // console.log("Gupta" + humi[i]);
 
-                console.log('Connected to mongo at: ' + mongoURL);
-                var coll = mongo.collection('Table3a');
-                coll.findOne({"dt":parseInt(temp[i])}, function (err, user) {
-                    if (user) {
-                        // json_responses={"statusCode": 200, "server": mongoURL, "hello": user.lat};
-                        console.log(user[humi[i]])
-                        res.render('index', { title: 'Express' });
-                        // res.send({"status":200,"detail":user});
-                    }
-                    else {
-                        json_responses={"statusCode": 401, "server": mongoURL};
-                        console.log(json_responses)
-                    }
-                });
-    }
+        forEach(temp, function(item, index, arr) {
+            console.log("each", item, index);
+            console.log('Connected to mongo at: ' + mongoURL);
+                        var coll = mongo.collection('Table3a');
+                        coll.findOne({"dt":parseInt(item)}, function (err, user) {
+                            if (user) {
+                                // json_responses={"statusCode": 200, "server": mongoURL, "hello": user.lat};
+                                // console.log(user[humi[index]])
+                                rfm.push(user[humi[index]]);
+                                // res.render('index', { title: 'Express' });
+                                // res.send({"status":200,"detail":user});
+                            }
+                            else {
+                                json_responses={"statusCode": 401, "server": mongoURL};
+                                console.log(json_responses)
+                            }
+                        });
+            var done = this.async();
+            setTimeout(function() {
+                done();
+            }, 500);
+        }, allDone);
+
+
+        // for(var i = 0; i < l; i++){
+    //     console.log("In for loop");
+    //     // console.log("Ankit" + temp[i]);
+    //     // console.log("Gupta" + humi[i]);
+    //
+    //             console.log('Connected to mongo at: ' + mongoURL);
+    //             var coll = mongo.collection('Table3a');
+    //             coll.findOne({"dt":parseInt(temp[i])}, function (err, user) {
+    //                 if (user) {
+    //                     // json_responses={"statusCode": 200, "server": mongoURL, "hello": user.lat};
+    //                     console.log(user[humi[i]])
+    //                     res.render('index', { title: 'Express' });
+    //                     // res.send({"status":200,"detail":user});
+    //                 }
+    //                 else {
+    //                     json_responses={"statusCode": 401, "server": mongoURL};
+    //                     console.log(json_responses)
+    //                 }
+    //             });
+    // }
     });
 });
 
