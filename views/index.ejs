@@ -197,17 +197,19 @@
           <div class="col-md-4">
             <div class="card">
               <div class="header">
-                <h4 class="title">Fire Statistics</h4>
-                <p class="category">Last Campaign Performance</p>
+                <h4 class="title">Property Loss (2016)</h4>
+                <!--<p class="category">Last Campaign Performance</p>-->
               </div>
               <div class="content">
                 <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
 
                 <div class="footer">
                   <div class="legend">
-                    <i class="fa fa-circle text-info"></i> Mitigated
-                    <i class="fa fa-circle text-danger"></i> Active
-                    <i class="fa fa-circle text-warning"></i> Highly Active
+                    <i class="fa fa-circle text-info"></i> Residential
+                    <i class="fa fa-circle text-danger"></i> Nonresidential
+                    <i class="fa fa-circle text-warning"></i> Vehicle
+                    <i class="fa fa-circle" style="color: #9368E9"></i> Educational
+                    <i class="fa fa-circle text-success"></i> Wild Land
                   </div>
                   <hr>
                   <div class="stats">
@@ -248,7 +250,7 @@
           <div class="col-md-6">
             <div class="card ">
               <div class="header">
-                <h4 class="title">2016 Fires</h4>
+                <h4 class="title">Loss to Lives (10-years Trends)</h4>
                 <p class="category">Including Fire for all States</p>
               </div>
               <div class="content">
@@ -256,8 +258,8 @@
 
                 <div class="footer">
                   <div class="legend">
-                    <i class="fa fa-circle text-info"></i> Mitigated in time
-                    <i class="fa fa-circle text-danger"></i> Mitigated over time
+                    <i class="fa fa-circle text-info"></i> Fire Deaths
+                    <i class="fa fa-circle text-danger"></i> Fire Injuries
                   </div>
                   <hr>
                   <div class="stats">
@@ -474,7 +476,7 @@
     app.controller('cmpe295B', function ($scope,$http,$window,$filter)
     {
 
-        alert("Ankit");
+//        alert("Ankit");
         $scope.map = function()
         {
             $window.location.href = '/maps';
