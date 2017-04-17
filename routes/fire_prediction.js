@@ -308,7 +308,7 @@ router.post('/', function(req, res, next) {
                                 // json_responses={"statusCode": 200, "server": mongoURL, "hello": user.lat};
                                 // console.log(user[humi[index]])
                                 reference_Fuel_Moisture.push(user[humi[index]]);
-                                //
+                                // res.send({ title: 'rate_Of_Spread_Fire' });
                                 // res.send({"status":200,"detail":user});
                             }
                             else {
@@ -324,6 +324,14 @@ router.post('/', function(req, res, next) {
     });
 });
 
+router.post('/renderPage', function(req, res, next) {
+    res.send({ title: 'detected_'});
+});
+
+
+router.get('/renderRealPage', function(req, res, next) {
+    res.render('fire_prediction',{ title: 'detected_'});
+});
 module.exports = router;
 
 

@@ -40,6 +40,8 @@ app.use('/users', users);
 app.use('/maps/getlatlong', maps);
 app.use('/fire_detection', fire_detection);
 app.all('/fire_prediction', fire_prediction);
+app.all('/fire_prediction/renderPage', fire_prediction);
+app.all('/fire_prediction/renderRealPage', fire_prediction);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
