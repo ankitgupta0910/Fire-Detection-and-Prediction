@@ -28,9 +28,14 @@ var wisp;
 var fm;
 var sf;
 var pt;
+var temp;
+var humi;
 /* GET home page. */
+router.post('/', function(req, res, next) {
+
 function allDone7(notAborted, arr) {
     console.log("Perimeter for point source fire" + perimeter_For_Point_Source_Fire);
+    res.send({"status":200,"detail":perimeter_For_Point_Source_Fire});
 }
 
 function allDone6(notAborted, arr) {
@@ -291,13 +296,9 @@ function allDone(notAborted, arr) {
     });
 }
 
-router.post('/', function(req, res, next) {
+
     mongo.connect(mongoURL, function () {
-    var temp = req.param("temp");
-    var humi = req.param("humi");
-    wisp = req.param("wisp");
-    fireName = req.param("name");
-    var l = req.param("temp").length;
+    // var l = req.param("temp").length;
 
         forEach(temp, function(item, index, arr) {
             // console.log("each", item, index);
@@ -325,6 +326,10 @@ router.post('/', function(req, res, next) {
 });
 
 router.post('/renderPage', function(req, res, next) {
+    temp = req.param("temp");
+    humi = req.param("humi");
+    wisp = req.param("wisp");
+    fireName = req.param("name");
     res.send({ title: 'detected_'});
 });
 
