@@ -180,10 +180,10 @@
     <div class="content">
       <div class="container-fluid">
         <div class="row">
+
           <div class="col-md-9">
             <div class="card tile">
-              <!--<img src="/images/<%= result %>" style="height:500px;width:715px" ng-mousemove="trackMouse($event)"></img>-->
-              <zoom src="{{ '/images/<%= result %>' }}"  frame="example1" img="image1" zoomlvl="1.5")></zoom>
+              <zoom src="{{ '/images/<%= result %>' }}"  frame="example1" img="image1" zoomlvl="1.5"></zoom>
             </div>
           </div>
 
@@ -340,7 +340,7 @@ src="./javascripts/bootstrap.min.js" type="text/javascript"></script>
             $http({
                 method: 'POST',
                 url: '/fire_prediction/renderPage',
-                data: {"temp":$scope.temp, "humi":$scope.humi, "wisp":$scope.wisp, "name" : "<%= detail %>"}
+                data: {"temp":$scope.temp, "humi":$scope.humi, "wisp":$scope.wisp, "name" : "<%= detail %>", "image":"<%= result %>"}
             }).then(function(response){
             $window.location.href = '/fire_prediction/renderRealPage';
 //              alert("Hello World!!");

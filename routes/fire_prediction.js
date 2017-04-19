@@ -22,6 +22,7 @@ var area_For_Point_Source_Fire = [];
 var perimeter_For_Point_Source_Fire = [];
 var average_effective_Wind_Speed_Factor;
 var fireName;
+var fireImage;
 var sp;
 var midwisp = [];
 var wisp;
@@ -37,7 +38,7 @@ function allDone7(notAborted, arr) {
     console.log("Perimeter for point source fire" + perimeter_For_Point_Source_Fire);
     res.send({"status":200,
               "pfpsf":perimeter_For_Point_Source_Fire, "afli":adjusted_Fire_Line_Intensity, "dfm":dead_Fuel_Moisture, "fl":flame_Length,
-        "arsf":adjusted_Rate_Of_Spread_Fire, "fsd":forward_Spread_Distance, "ews":effective_Wind_Speed, "afpsf":area_For_Point_Source_Fire});
+        "arsf":adjusted_Rate_Of_Spread_Fire, "fsd":forward_Spread_Distance, "ews":effective_Wind_Speed, "afpsf":area_For_Point_Source_Fire, "image":fireImage});
 }
 
 function allDone6(notAborted, arr) {
@@ -332,12 +333,13 @@ router.post('/renderPage', function(req, res, next) {
     humi = req.param("humi");
     wisp = req.param("wisp");
     fireName = req.param("name");
+    fireImage = req.param("image");
     res.send({ title: 'detected_'});
 });
 
 
 router.get('/renderRealPage', function(req, res, next) {
-    res.render('fire_prediction',{ title: 'detected_'});
+    res.render('fire_prediction',{ title: fireImage});
 });
 module.exports = router;
 
