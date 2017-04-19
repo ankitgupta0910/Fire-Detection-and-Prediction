@@ -35,7 +35,9 @@ router.post('/', function(req, res, next) {
 
 function allDone7(notAborted, arr) {
     console.log("Perimeter for point source fire" + perimeter_For_Point_Source_Fire);
-    res.send({"status":200,"detail":perimeter_For_Point_Source_Fire});
+    res.send({"status":200,
+              "pfpsf":perimeter_For_Point_Source_Fire, "afli":adjusted_Fire_Line_Intensity, "dfm":dead_Fuel_Moisture, "fl":flame_Length,
+        "arsf":adjusted_Rate_Of_Spread_Fire, "fsd":forward_Spread_Distance, "ews":effective_Wind_Speed, "afpsf":area_For_Point_Source_Fire});
 }
 
 function allDone6(notAborted, arr) {
@@ -159,7 +161,7 @@ function allDone2(notAborted, arr) {
                     // console.log(sf)
                     // console.log()
                     total_Correction_Factor.push(wind_Factor[k] + sf + 1);
-                    adjusted_Rate_Of_Spread_Fire.push(rate_Of_Spread_Fire[k] * (wind_Factor[k] + sf + 1));
+                    adjusted_Rate_Of_Spread_Fire.push(Math.round(rate_Of_Spread_Fire[k] * (wind_Factor[k] + sf + 1)));
                 }
 
                 mongo.connect(mongoURL, function () {

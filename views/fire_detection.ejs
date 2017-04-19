@@ -362,7 +362,7 @@ src="./javascripts/bootstrap.min.js" type="text/javascript"></script>
                 $scope.humi.push((response['data']['history']['observations'][i]['hum']).toString());
                 $scope.wisp.push((response['data']['history']['observations'][i]['wspdi']).toString());
                 var myObj = {
-                    "date" : response['data']['history']['observations'][i]['date']['pretty'],
+                    "date" : ((response['data']['history']['observations'][i]['date']['pretty']).split('PDT'))[0],
                     "tempi" : Math.floor(response['data']['history']['observations'][i]['tempi']),
                     "dewpti" : response['data']['history']['observations'][i]['dewpti'],
                     "hum" : response['data']['history']['observations'][i]['hum'],

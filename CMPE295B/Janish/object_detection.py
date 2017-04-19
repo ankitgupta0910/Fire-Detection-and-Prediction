@@ -5,6 +5,7 @@ import sys
 #%matplotlib inline
 #
 cctv_image = cv2.imread('/Users/ankitgupta/Documents/WebstormProjects/CMPE295B/public/images/' + sys.argv[1] + '.jpg')
+#cctv_image = cv2.imread('imagecheck.jpg')
 #print 'Number of arguments:', len(sys.argv), 'arguments.'
 print (str(sys.argv[1]))
 print (cctv_image.size)
@@ -23,6 +24,7 @@ for (x,y,w,h) in vehicles:
 plt.figure(figsize=(9,9))
 plt.axis('off')
 cv2.imwrite( "/Users/ankitgupta/Documents/WebstormProjects/CMPE295B/public/images/detected_" + sys.argv[1] + '.jpg',cctv_image);
+#cv2.imwrite("/Users/ankitgupta/Desktop/ankit.jpg",cctv_image)
 #plt.imshow(cv2.cvtColor(cctv_image, cv2.COLOR_BGR2RGB))
 #cv2.imshow('cctv_image', cctv_image)
 #cv2.waitKey(0)
