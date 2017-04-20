@@ -31,6 +31,7 @@ var sf;
 var pt;
 var temp;
 var humi;
+var time;
 /* GET home page. */
 router.post('/', function(req, res, next) {
 
@@ -38,7 +39,7 @@ function allDone7(notAborted, arr) {
     console.log("Perimeter for point source fire" + perimeter_For_Point_Source_Fire);
     res.send({"status":200,
               "pfpsf":perimeter_For_Point_Source_Fire, "afli":adjusted_Fire_Line_Intensity, "dfm":dead_Fuel_Moisture, "fl":flame_Length,
-        "arsf":adjusted_Rate_Of_Spread_Fire, "fsd":forward_Spread_Distance, "ews":effective_Wind_Speed, "afpsf":area_For_Point_Source_Fire, "image":fireImage});
+        "arsf":adjusted_Rate_Of_Spread_Fire, "fsd":forward_Spread_Distance, "ews":effective_Wind_Speed, "afpsf":area_For_Point_Source_Fire, "image":fireImage, "time":time});
 }
 
 function allDone6(notAborted, arr) {
@@ -48,6 +49,7 @@ function allDone6(notAborted, arr) {
             var coll = mongo.collection('Table7c');
             coll.findOne({"fsd":parseInt(item)}, function (err, user9) {
                 if (user9) {
+                    console.log("user9" + user9)
                     perimeter_For_Point_Source_Fire.push(user9[average_effective_Wind_Speed_Factor]);
                 }
                 else {
@@ -76,6 +78,7 @@ function allDone5(notAborted, arr) {
             var coll = mongo.collection('Table7b');
             coll.findOne({"sdc":parseInt(item)}, function (err, user8) {
                 if (user8) {
+                    console.log("user8" + user8);
                     area_For_Point_Source_Fire.push(user8[average_effective_Wind_Speed_Factor]);
                 }
                 else {
@@ -104,6 +107,7 @@ function allDone4(notAborted, arr) {
             var coll = mongo.collection('Table7a');
             coll.findOne({"esf":parseInt(item)}, function (err, user7) {
                 if (user7) {
+                    console.log("user7" + user7);
                     effective_Wind_Speed.push(user7[fm]);
                 }
                 else {
@@ -126,12 +130,13 @@ function allDone3(notAborted, arr) {
         adjusted_Fire_Line_Intensity.push(Math.round(fire_Line_Intensity[l] * total_Correction_Factor[l]));
         effective_Wind_Speed_Factor.push(Math.floor(total_Correction_Factor[l])%2 == 0?Math.floor(total_Correction_Factor[l])-1:Math.floor(total_Correction_Factor[l]));
     }
-// console.log("Effective" + effective_Wind_Speed_Factor);
+console.log("Effective" + effective_Wind_Speed_Factor);
     mongo.connect(mongoURL, function () {
         forEach(adjusted_Fire_Line_Intensity, function(item, index, arr) {
             var coll = mongo.collection('Table6c');
             coll.findOne({"afi":parseInt(item)}, function (err, user6) {
                 if (user6) {
+                    console.log("user6" + user6);
                     flame_Length.push(user6['fl']);
                 }
                 else {
@@ -171,7 +176,7 @@ function allDone2(notAborted, arr) {
                         coll.findOne({"dfm":parseInt(item)}, function (err, user5) {
                             if (user5) {
                                 // console.log("Fuel Model" + user2[user['Fuel model']]);
-                                // console.log("User 2" + user2);
+                                console.log("User 5" + user5);
                                 fire_Line_Intensity.push(user5[fm]);
                             }
                             else {
@@ -198,7 +203,7 @@ function allDone1(notAborted, arr) {
             var coll = mongo.collection('Table4a');
         coll.findOne({"fm":fm}, function (err, user3) {
             if (user3) {
-                    // console.log(user3);
+                    console.log("user3" + user3);
                     for(var j = 0; j < wisp.length; j++)
                     {
                         // console.log(wisp[j]);
@@ -212,7 +217,7 @@ function allDone1(notAborted, arr) {
                             coll.findOne({"mw":parseInt(item)}, function (err, user4) {
                                 if (user4) {
                                     // console.log("Fuel Model" + user2[user['Fuel model']]);
-                                    // console.log("User 2" + user2);
+                                    console.log("User 4" + user4);
                                     wind_Factor.push(user4[fm]);
                                 }
                                 else {
@@ -241,10 +246,11 @@ function allDone1(notAborted, arr) {
 function allDone(notAborted, arr) {
     // console.log(reference_Fuel_Moisture, notAborted, arr);
     mongo.connect(mongoURL, function () {
-            var coll = mongo.collection('Input');
+            var coll = mongo.collection('Inputq');
             coll.findOne({"Fire Name":fireName}, function (err, user) {
                 if (user) {
                     // console.log(user["Aspect"]);
+                    console.log("user" + user);
                     fm = user["Fuel model"];
                     sp = user["Slope percent"];
                     pt = user["Projection Time"];
@@ -253,7 +259,7 @@ function allDone(notAborted, arr) {
                             var coll = mongo.collection('Table3b');
                             coll.findOne({"Aspect":user["Aspect"]}, function (err, user1) {
                                 if (user1) {
-                                    // console.log(user1[t]);
+                                    console.log("user1" + user1);
                                     for (var i = 0; i < reference_Fuel_Moisture.length; i++)
                                     {
                                         dead_Fuel_Moisture.push( reference_Fuel_Moisture[i] + user1[t] );
@@ -267,7 +273,7 @@ function allDone(notAborted, arr) {
                                             coll.findOne({"dfm":parseInt(item)}, function (err, user2) {
                                                 if (user2) {
                                                     // console.log("Fuel Model" + user2[user['Fuel model']]);
-                                                    // console.log("User 2" + user2);
+                                                    console.log("User 2" + user2);
                                                     rate_Of_Spread_Fire.push(user2[user['Fuel model']]);
                                                     }
                                                 else {
@@ -334,12 +340,25 @@ router.post('/renderPage', function(req, res, next) {
     wisp = req.param("wisp");
     fireName = req.param("name");
     fireImage = req.param("image");
+    time = req.param("time");
     res.send({ title: 'detected_'});
 });
 
 
 router.get('/renderRealPage', function(req, res, next) {
-    res.render('fire_prediction',{ title: fireImage});
+    console.log(fireImage.split("_0."));
+    res.render('fire_prediction',{ title0: (fireImage.split("_0."))[0] + '_0.jpg',
+        title1: (fireImage.split("_0."))[0] + '_1.jpg',
+        title2: (fireImage.split("_0."))[0] + '_2.jpg',
+        title3: (fireImage.split("_0."))[0] + '_3.jpg',
+        title4: (fireImage.split("_0."))[0] + '_4.jpg',
+        title5: (fireImage.split("_0."))[0] + '_5.jpg',
+        title6: (fireImage.split("_0."))[0] + '_6.jpg',
+        title7: (fireImage.split("_0."))[0] + '_7.jpg',
+        title8: (fireImage.split("_0."))[0]+ '_8.jpg',
+        title9: (fireImage.split("_0."))[0] + '_9.jpg',
+        title10: (fireImage.split("_0."))[0] + '_10.jpg',
+        title11: (fireImage.split("_0."))[0] + '_11.jpg'});
 });
 module.exports = router;
 

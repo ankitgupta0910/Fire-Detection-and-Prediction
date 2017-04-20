@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
     });
 
 
-    res.render('fire_detection', { result: 'detected_' + req.query.var + '.jpg', detail: req.query.var1, qdate: dateFormat(now, "yyyymmdd")});
+    res.render('fire_detection', { result: 'detected_' + req.query.var + '_0.jpg', detail: req.query.var1, qdate: dateFormat(now, "yyyymmdd")});
 });
 
 

@@ -214,8 +214,7 @@
         </div>
         </div>
 
-
-  <div>
+      <div>
     <table class="table table-bordered">
       <!--<tr>-->
         <!--<th ng-repeat="(key, val) in items[0]">{{key}}</th>-->
@@ -340,7 +339,7 @@ src="./javascripts/bootstrap.min.js" type="text/javascript"></script>
             $http({
                 method: 'POST',
                 url: '/fire_prediction/renderPage',
-                data: {"temp":$scope.temp, "humi":$scope.humi, "wisp":$scope.wisp, "name" : "<%= detail %>", "image":"<%= result %>"}
+                data: {"temp":$scope.temp, "humi":$scope.humi, "wisp":$scope.wisp, "name" : "<%= detail %>", "image":"<%= result %>", "time":$scope.time}
             }).then(function(response){
             $window.location.href = '/fire_prediction/renderRealPage';
 //              alert("Hello World!!");
@@ -349,7 +348,7 @@ src="./javascripts/bootstrap.min.js" type="text/javascript"></script>
 
         $http({
             method: 'GET',
-            url: 'http://api.wunderground.com/api/e543fd122f652dfc/history_' + <%= qdate %> + '/q/CA/San_Francisco.json'
+            url: 'http://api.wunderground.com/api/e543fd122f652dfc/history_20160504/q/CA/San_Francisco.json'
 
         }). then(function(response) {
             alert("Ankit");
@@ -357,10 +356,12 @@ src="./javascripts/bootstrap.min.js" type="text/javascript"></script>
             $scope.temp = [];
             $scope.humi = [];
             $scope.wisp = [];
+            $scope.time = [];
             for (var i = 0; i < Object.keys(response['data']['history']['observations']).length - 1; i++) {
                 $scope.temp.push((Math.floor(response['data']['history']['observations'][i]['tempi'])).toString());
                 $scope.humi.push((response['data']['history']['observations'][i]['hum']).toString());
                 $scope.wisp.push((response['data']['history']['observations'][i]['wspdi']).toString());
+                $scope.time.push((response['data']['history']['observations'][i]['date']['pretty']).split('PDT')[0]);
                 var myObj = {
                     "date" : ((response['data']['history']['observations'][i]['date']['pretty']).split('PDT'))[0],
                     "tempi" : Math.floor(response['data']['history']['observations'][i]['tempi']),
