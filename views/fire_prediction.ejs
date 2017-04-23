@@ -258,6 +258,26 @@
             </div>
           </div>
         </div>
+
+        <center>
+          <div id="title" style="font-size:14px; font-weight: bold; margin-top:0px; margin-bottom:0px;"></div>
+          <div id="lastMod" style="font-size:12px; font-style: italic; margin-top:0px; margin-bottom:0px;"></div>
+
+
+          <div id="wsii"></div>
+          <img src="/images/legend.png">
+          <div style="margin-top:0px; margin-bottom:0px; align:center"></div>
+
+          <br>
+
+          <div id="wsii_components"></div>
+
+          <br>
+
+          <div id="ndfd"></div>
+
+        </center>
+
         <!--<div>-->
           <!--<div class="col-md-3">-->
           <!--<div class="card">-->
@@ -298,8 +318,8 @@
             <td>Effective Wind Speed</td>
             <td>Area For Point Source Fire</td>
           </tr>
-            <tr ng-repeat="item in items">
-              <td ng-repeat="(key, val) in item">{{val}}</td>
+            <tr ng-repeat="item in items" ng-style="{'background-color': item.clr}">
+              <td ng-repeat="(key, val) in item" ng-if="$index < 9">{{val}}</td>
             </tr>
         </table>
       </div>
@@ -393,6 +413,12 @@ src="../javascripts/bootstrap.min.js" type="text/javascript"></script>
 
         alert("Ankit");
 
+        $scope.set_color = function (payment) {
+            if (payment.number > 50) {
+                return { color: "red" }
+            }
+        }
+
         $http({
             method: 'POST',
             url: '/fire_prediction'
@@ -402,7 +428,17 @@ src="../javascripts/bootstrap.min.js" type="text/javascript"></script>
                 alert("Anit Gupta");
                 $scope.fireImage = response.data.image;
                 $scope.items = []
+                var myclr
                 for (var i = 0; i < response.data.pfpsf.length; i++) {
+                    $scope.color = Math.floor((response.data.dfm[i] * response.data.fl[i] * response.data.arsf[i] * response.data.fsd[i])/response.data.ews[i])
+//                    alert($scope.color)
+                    if ($scope.color <= 200)
+                    {myclr = "#FFFF00"}
+                    else if ($scope.color > 200 && $scope.color <= 800)
+                    {myclr = "#FFC000"}
+                    else
+                    {myclr = "#FF0000"}
+//                    alert(myclr)
                     var myObj = {
                         "ti" : response.data.time[i],
                         "pfpsf" : response.data.pfpsf[i],
@@ -412,7 +448,8 @@ src="../javascripts/bootstrap.min.js" type="text/javascript"></script>
                         "arsf" : response.data.arsf[i],
                         "fsd" : response.data.fsd[i],
                         "ews" : response.data.ews[i],
-                        "afpsf" : response.data.afpsf[i]
+                        "afpsf" : response.data.afpsf[i],
+                        "clr" : myclr
                     }
                     $scope.items.push(myObj);
                 }

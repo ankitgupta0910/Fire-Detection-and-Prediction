@@ -217,7 +217,7 @@ function allDone1(notAborted, arr) {
                             coll.findOne({"mw":parseInt(item)}, function (err, user4) {
                                 if (user4) {
                                     // console.log("Fuel Model" + user2[user['Fuel model']]);
-                                    console.log("User 4" + user4);
+                                    // console.log("User 4" + user4);
                                     wind_Factor.push(user4[fm]);
                                 }
                                 else {
