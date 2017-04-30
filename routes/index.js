@@ -19,42 +19,39 @@ router.get('/', function(req, res, next) {
 
     var json_responses;
 
-    mongo.connect(mongoURL, function () {
-        console.log('Connected to mongo at: ' + mongoURL);
-        var coll = mongo.collection('cafire');
-
-        coll.findOne({}, function (err, user) {
-            if (user) {
-
-                json_responses={"statusCode": 200, "server": mongoURL, "hello": user.item};
-                // res.send(json_responses)
-                console.log(json_responses)
-            }
-            else {
-                json_responses={"statusCode": 401, "server": mongoURL};
-                // res.send(json_responses)
-                console.log(json_responses)
-            }
-        });
-    });
-    // var options = {
-    //     host: 'cdfdata.fire.ca.gov',
-    //     path: '/incidents/rss.xml'
-    // };
+    // mongo.connect(mongoURL, function () {
+    //     console.log('Connected to mongo at: ' + mongoURL);
+    //     var coll = mongo.collection('cafire');
     //
-    // http.get(options, function(res) {
-    //     console.log("Got response: " + res.data);
-    //     res.on('data', function (chunk) {
-    //         console.log('BODY: ' + chunk);
+    //     coll.findOne({}, function (err, user) {
+    //         if (user) {
+    //
+    //             json_responses={"statusCode": 200, "server": mongoURL, "hello": user.item};
+    //             // res.send(json_responses)
+    //             console.log(json_responses)
+    //         }
+    //         else {
+    //             json_responses={"statusCode": 401, "server": mongoURL};
+    //             // res.send(json_responses)
+    //             console.log(json_responses)
+    //         }
     //     });
-    //     }).on('error', function(e) {
-    //     console.log("Got error: " + e.message);
     // });
-    // while(chunk != "undefined")
-    //     var cleanedString = chunk.replace("\ufeff", "");
-    //     console.log(cleanedString);
-
     res.render('index', { title: 'Express' });
+});
+
+router.get('/graphs', function(req, res, next) {
+    res.render('graphpage', { title: 'Express' });
+});
+
+router.post('/signin', function(req, res, next) {
+    var json_responses;
+    var user = req.param("user");
+    email=user.email;
+    password=user.password;
+    console.log(user)
+    if (email == "ankitgupta@qwe" && password == "ankitgupta")
+    {res.send({ title: 'express', status : 200});}
 });
 
 module.exports = router;

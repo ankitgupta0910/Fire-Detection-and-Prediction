@@ -30,6 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.all('/', index);
+app.all('/signin', index);
 app.use('/user_profile', user_profile);
 app.use('/satellite_data', satellite_data);
 app.use('/fire_prediction', fire_prediction);
@@ -42,6 +43,7 @@ app.use('/fire_detection', fire_detection);
 app.all('/fire_prediction', fire_prediction);
 app.all('/fire_prediction/renderPage', fire_prediction);
 app.all('/fire_prediction/renderRealPage', fire_prediction);
+app.all('/graphs', index);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
