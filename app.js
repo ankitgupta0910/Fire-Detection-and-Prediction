@@ -31,19 +31,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.all('/', index);
 app.all('/signin', index);
-app.use('/user_profile', user_profile);
-app.use('/satellite_data', satellite_data);
-app.use('/fire_prediction', fire_prediction);
+app.all('/graphs', index);
 app.use('/maps', maps);
-app.use('/fire_fighters', fire_fighters);
-app.use('/notifications', notifications);
-app.use('/users', users);
 app.use('/maps/getlatlong', maps);
 app.use('/fire_detection', fire_detection);
+app.use('/fire_prediction', fire_prediction);
 app.all('/fire_prediction', fire_prediction);
 app.all('/fire_prediction/renderPage', fire_prediction);
 app.all('/fire_prediction/renderRealPage', fire_prediction);
-app.all('/graphs', index);
+app.use('/user_profile', user_profile);
+app.use('/satellite_data', satellite_data);
+app.use('/fire_fighters', fire_fighters);
+app.use('/notifications', notifications);
+app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

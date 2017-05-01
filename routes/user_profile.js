@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
     //     var cleanedString = chunk.replace("\ufeff", "");
     //     console.log(cleanedString);
 
-    res.render('index', { title: 'Express' });
+    res.render('user_profile');
 });
 
 module.exports = router;

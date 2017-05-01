@@ -9,10 +9,8 @@ var parseString = require('xml2js').parseString;
 var chunk;
 
 /* GET home page. */
-router.get('/fire_fighters', function(req, res, next) {
-
-
-    res.render('index', { title: 'Express' });
+router.get('/', function(req, res, next) {
+    res.render('fire_fighters');
 });
 
 module.exports = router;
