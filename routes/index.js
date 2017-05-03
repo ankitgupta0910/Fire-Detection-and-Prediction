@@ -50,7 +50,7 @@ router.post('/signin', function(req, res, next) {
     email=user.email;
     password=user.password;
     console.log(user)
-    if (email == "ankitgupta@qwe" && password == "ankitgupta")
+    if (email == "tech@spartans" && password == "techsp")
     {res.send({ title: 'express', status : 200});}
 });
 
